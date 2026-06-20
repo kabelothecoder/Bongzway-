@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import Navigation from "@/components/ui/Navigation";
 
 const brokers = ["Exness SA", "IFX Brokers", "Vault Markets"] as const;
 const accountSizes = [
@@ -89,30 +90,7 @@ export default function MatrixPage() {
       <div className="absolute top-[-10%] right-[-10%] w-[50vw] h-[50vw] bg-red-600/10 rounded-full blur-[140px] z-0 pointer-events-none mix-blend-screen"></div>
 
       {/* Floating TopNavBar */}
-      <div className="fixed top-6 left-0 w-full z-50 flex justify-center px-4 pointer-events-none">
-        <nav className="bg-neutral-950/60 backdrop-blur-md border border-neutral-800/50 rounded-full px-6 py-3 w-full max-w-5xl flex justify-between items-center pointer-events-auto shadow-2xl">
-          <Link href="/" className="font-display-lg text-xl tracking-tighter text-white uppercase flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-red-600 shadow-[0_0_8px_#dc2626]"></div> BONGZWAY
-          </Link>
-          <div className="hidden md:flex gap-8">
-            <Link className="group relative font-label-caps text-sm text-white transition-colors uppercase" href="/matrix">
-              Matrix
-              <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-red-600 shadow-[0_0_6px_#dc2626]"></span>
-            </Link>
-            <Link className="group relative font-label-caps text-sm text-neutral-400 hover:text-white transition-colors uppercase" href="/robot-results">
-              Robot Results
-              <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-red-600 opacity-0 group-hover:opacity-100 transition-opacity shadow-[0_0_6px_#dc2626]"></span>
-            </Link>
-            <Link className="group relative font-label-caps text-sm text-neutral-400 hover:text-white transition-colors uppercase" href="/student-results">
-              Student Proof
-              <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-red-600 opacity-0 group-hover:opacity-100 transition-opacity shadow-[0_0_6px_#dc2626]"></span>
-            </Link>
-          </div>
-          <Link href="/checkout" className="bg-white text-black font-label-caps text-xs px-5 py-2.5 rounded-full uppercase hover:bg-neutral-200 transition-colors shadow-[0_0_15px_rgba(255,255,255,0.1)] hover:shadow-[0_0_20px_rgba(255,0,0,0.4)] hidden md:block">
-            CHECKOUT
-          </Link>
-        </nav>
-      </div>
+      <Navigation />
 
       <div className="relative z-10 w-full max-w-6xl mx-auto space-y-12">
 
@@ -323,6 +301,52 @@ export default function MatrixPage() {
                 +{metrics.monthlyReturn.reduce((a, b) => a + b, 0).toFixed(1)}%
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Strategy Section */}
+        <div className="text-center mt-12">
+          <h2 className="font-headline-lg text-4xl uppercase tracking-tighter text-white">
+            Core <span className="text-red-500">Strategy</span>
+          </h2>
+          <p className="font-body-md text-neutral-400 mt-4 max-w-2xl mx-auto text-sm sm:text-base">
+            Alpha-ScalpStrike V3 is an institutional-grade algorithmic system that analyzes market structure, liquidity zones, and momentum anomalies to execute high-probability entries with strict risk management.
+          </p>
+        </div>
+
+        {/* Features Section */}
+        <div className="text-center mt-12 mb-8">
+          <h2 className="font-headline-lg text-4xl sm:text-5xl uppercase tracking-tighter text-white">
+            CHART <span className="text-red-500">SCANNER</span>
+          </h2>
+          <p className="font-body-md text-neutral-400 mt-4 max-w-2xl mx-auto text-sm sm:text-base">
+            A built-in feature of the Alpha-ScalpStrike V3 robot — upload a screenshot of any trading chart and let it read the structure, candles and momentum, then return a possible direction for you.
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+          <div className="bg-neutral-900 border border-neutral-800 p-8 rounded-[2rem] flex flex-col gap-4">
+            <div className="w-12 h-12 rounded-full bg-red-600/20 text-red-500 flex items-center justify-center">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+            </div>
+            <h3 className="text-xl font-headline-lg text-white uppercase">Upload Screenshot</h3>
+            <p className="text-neutral-400 text-sm">Drop a chart image from any broker or platform.</p>
+          </div>
+          
+          <div className="bg-neutral-900 border border-neutral-800 p-8 rounded-[2rem] flex flex-col gap-4">
+            <div className="w-12 h-12 rounded-full bg-red-600/20 text-red-500 flex items-center justify-center">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 3h6v6H3z"></path><path d="M15 3h6v6h-6z"></path><path d="M15 15h6v6h-6z"></path><path d="M3 15h6v6H3z"></path></svg>
+            </div>
+            <h3 className="text-xl font-headline-lg text-white uppercase">Smart Pattern Scan</h3>
+            <p className="text-neutral-400 text-sm">The robot reads structure, candles and market momentum.</p>
+          </div>
+          
+          <div className="bg-neutral-900 border border-neutral-800 p-8 rounded-[2rem] flex flex-col gap-4">
+            <div className="w-12 h-12 rounded-full bg-red-600/20 text-red-500 flex items-center justify-center">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+            </div>
+            <h3 className="text-xl font-headline-lg text-white uppercase">Possible Direction</h3>
+            <p className="text-neutral-400 text-sm">Receive a clear BUY or SELL signal.</p>
           </div>
         </div>
 

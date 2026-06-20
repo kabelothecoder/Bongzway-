@@ -200,6 +200,47 @@ export default function CheckoutPage() {
         <CheckoutContent />
       </Suspense>
 
+      {/* How It Works Section */}
+      <div className="w-full max-w-5xl mx-auto mt-24 relative z-10">
+        <div className="mb-12 text-center">
+          <h2 className="font-headline-lg text-4xl sm:text-5xl uppercase tracking-tighter text-white">
+            HOW IT <span className="text-red-500">WORKS</span>
+          </h2>
+          <p className="font-body-md text-neutral-400 mt-4">
+            From purchase to profit — in four simple steps.
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="bg-neutral-900 border border-neutral-800 p-8 rounded-[2rem] flex flex-col gap-2 relative overflow-hidden group hover:border-red-500/30 transition-colors">
+            <div className="absolute right-[-10px] top-[-10px] text-[8rem] font-black text-neutral-800/20 leading-none group-hover:text-red-900/10 transition-colors">01</div>
+            <div className="text-red-500 font-label-caps text-xs uppercase mb-2">Step 01</div>
+            <h3 className="text-xl font-headline-lg text-white uppercase relative z-10">Choose Your Version</h3>
+            <p className="text-neutral-400 text-sm relative z-10">Pick the copy that matches your device — Android, iOS or PC.</p>
+          </div>
+          
+          <div className="bg-neutral-900 border border-neutral-800 p-8 rounded-[2rem] flex flex-col gap-2 relative overflow-hidden group hover:border-red-500/30 transition-colors">
+            <div className="absolute right-[-10px] top-[-10px] text-[8rem] font-black text-neutral-800/20 leading-none group-hover:text-red-900/10 transition-colors">02</div>
+            <div className="text-red-500 font-label-caps text-xs uppercase mb-2">Step 02</div>
+            <h3 className="text-xl font-headline-lg text-white uppercase relative z-10">Make Payment</h3>
+            <p className="text-neutral-400 text-sm relative z-10">Pay via Bank Transfer (FNB) or USDT TRC20 for international.</p>
+          </div>
+
+          <div className="bg-neutral-900 border border-neutral-800 p-8 rounded-[2rem] flex flex-col gap-2 relative overflow-hidden group hover:border-red-500/30 transition-colors">
+            <div className="absolute right-[-10px] top-[-10px] text-[8rem] font-black text-neutral-800/20 leading-none group-hover:text-red-900/10 transition-colors">03</div>
+            <div className="text-red-500 font-label-caps text-xs uppercase mb-2">Step 03</div>
+            <h3 className="text-xl font-headline-lg text-white uppercase relative z-10">Send Proof</h3>
+            <p className="text-neutral-400 text-sm relative z-10">Send your proof of payment to us on WhatsApp.</p>
+          </div>
+
+          <div className="bg-neutral-900 border border-neutral-800 p-8 rounded-[2rem] flex flex-col gap-2 relative overflow-hidden group hover:border-red-500/30 transition-colors">
+            <div className="absolute right-[-10px] top-[-10px] text-[8rem] font-black text-neutral-800/20 leading-none group-hover:text-red-900/10 transition-colors">04</div>
+            <div className="text-red-500 font-label-caps text-xs uppercase mb-2">Step 04</div>
+            <h3 className="text-xl font-headline-lg text-white uppercase relative z-10">Get Started</h3>
+            <p className="text-neutral-400 text-sm relative z-10">Receive your setup instructions and start trading on autopilot.</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
