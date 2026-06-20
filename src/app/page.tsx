@@ -47,8 +47,8 @@ export default function Home() {
           
           <div className="container mx-auto px-6 md:px-12 max-w-7xl relative z-10 flex flex-col md:flex-row items-center h-full">
             {/* Left Content */}
-            <div className="w-full md:w-[60%] text-left space-y-6 relative z-20 mt-12 md:mt-0 py-16">
-              <div className="inline-flex items-center gap-2.5 border border-neutral-700/60 bg-neutral-900/70 rounded-full px-4 py-1.5 font-label-caps text-xs text-neutral-300 uppercase mb-4 backdrop-blur-sm">
+            <div className="w-full md:w-[60%] text-center md:text-left flex flex-col items-center md:items-start space-y-6 relative z-20 mt-8 md:mt-0 py-12 md:py-16">
+              <div className="inline-flex items-center gap-2.5 border border-neutral-700/60 bg-neutral-900/70 rounded-full px-4 py-1.5 font-label-caps text-[10px] md:text-xs text-neutral-300 uppercase mb-2 backdrop-blur-sm">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
@@ -56,17 +56,17 @@ export default function Home() {
                 Robot is Live — Trading Now
               </div>
               
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tighter leading-[0.95] text-white uppercase drop-shadow-2xl">
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tighter leading-[1] text-white uppercase drop-shadow-2xl">
                 AUTOMATE<br/>
                 YOUR EDGE.<br/>
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">TRADE LIKE AN INSTITUTION.</span>
               </h1>
               
-              <p className="font-body-md text-neutral-300 max-w-[550px] text-lg leading-relaxed">
+              <p className="font-body-md text-neutral-300 max-w-[550px] mx-auto md:mx-0 text-base sm:text-lg leading-relaxed">
                 Deploy elite algorithmic trading systems designed for absolute precision. Maximize win rates, eliminate emotional trading, and execute with robotic efficiency.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4 pt-6">
+              <div className="flex flex-col sm:flex-row gap-4 pt-4 md:pt-6 w-full sm:w-auto">
                 <Link href="/checkout" className="bg-red-600 text-white font-label-caps text-sm px-8 py-4 rounded-full uppercase hover:bg-red-700 transition-all w-full sm:w-auto text-center shadow-[0_0_20px_rgba(220,38,38,0.3)] hover:shadow-[0_0_30px_rgba(220,38,38,0.5)] border border-red-500 inline-block">
                   Get Started
                 </Link>
@@ -76,38 +76,38 @@ export default function Home() {
               </div>
 
               {/* Platform Stack Pill */}
-              <div className="pt-12">
-                <div className="inline-flex items-center gap-4 bg-neutral-900/50 border border-neutral-800/50 backdrop-blur-md rounded-full px-5 py-2.5">
-                  <span className="text-xs font-label-caps text-neutral-400 uppercase tracking-widest mr-2">Supported on</span>
+              <div className="pt-8">
+                <div className="inline-flex flex-wrap items-center justify-center gap-3 bg-neutral-900/50 border border-neutral-800/50 backdrop-blur-md rounded-full px-5 py-2.5">
+                  <span className="text-[10px] sm:text-xs font-label-caps text-neutral-400 uppercase tracking-widest mr-1">Supported on</span>
                   
                   {/* Windows SVG */}
                   <div className="flex items-center gap-1.5 text-neutral-200">
-                    <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-                    <span className="text-[10px] font-label-caps uppercase">Win</span>
+                    <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                    <span className="text-[9px] sm:text-[10px] font-label-caps uppercase">Win</span>
                   </div>
 
                   <div className="w-[1px] h-3 bg-neutral-700"></div>
 
                   {/* Android SVG */}
                   <div className="flex items-center gap-1.5 text-neutral-200">
-                    <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
-                    <span className="text-[10px] font-label-caps uppercase">Android</span>
+                    <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+                    <span className="text-[9px] sm:text-[10px] font-label-caps uppercase">Android</span>
                   </div>
 
                   <div className="w-[1px] h-3 bg-neutral-700"></div>
 
                   {/* Apple SVG */}
                   <div className="flex items-center gap-1.5 text-neutral-200">
-                    <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2.04C10.5 2.04 9.36 3.1 9.36 4.54c0 .08 0 .16.01.24-.01 0-.01 0-.01.01-1.2.04-2.43.68-3.23 1.76-1.12 1.52-1.39 3.65-.68 5.48.74 1.88 2.06 3.32 3.36 4.88 1.1 1.34 2.37 2.92 3.86 2.87 1.43-.05 1.94-.92 3.65-.92 1.7 0 2.16.92 3.68.89 1.54-.03 2.66-1.46 3.75-2.83 1.25-1.55 1.75-3.04 1.78-3.12-.04-.02-2.93-1.11-2.96-4.42-.03-2.77 2.27-4.11 2.38-4.18-1.31-1.9-3.35-2.16-4.07-2.22-1.74-.17-3.41 1.03-4.31 1.03-.9 0-2.26-1.02-3.68-1.01zM14.9 0c-.8.03-1.85.53-2.4 1.19-.48.56-.91 1.48-.77 2.37.89.07 1.83-.43 2.39-1.09.52-.61.99-1.58.82-2.47-.01 0-.03 0-.04 0z"/></svg>
-                    <span className="text-[10px] font-label-caps uppercase">iOS</span>
+                    <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2.04C10.5 2.04 9.36 3.1 9.36 4.54c0 .08 0 .16.01.24-.01 0-.01 0-.01.01-1.2.04-2.43.68-3.23 1.76-1.12 1.52-1.39 3.65-.68 5.48.74 1.88 2.06 3.32 3.36 4.88 1.1 1.34 2.37 2.92 3.86 2.87 1.43-.05 1.94-.92 3.65-.92 1.7 0 2.16.92 3.68.89 1.54-.03 2.66-1.46 3.75-2.83 1.25-1.55 1.75-3.04 1.78-3.12-.04-.02-2.93-1.11-2.96-4.42-.03-2.77 2.27-4.11 2.38-4.18-1.31-1.9-3.35-2.16-4.07-2.22-1.74-.17-3.41 1.03-4.31 1.03-.9 0-2.26-1.02-3.68-1.01zM14.9 0c-.8.03-1.85.53-2.4 1.19-.48.56-.91 1.48-.77 2.37.89.07 1.83-.43 2.39-1.09.52-.61.99-1.58.82-2.47-.01 0-.03 0-.04 0z"/></svg>
+                    <span className="text-[9px] sm:text-[10px] font-label-caps uppercase">iOS</span>
                   </div>
 
                 </div>
               </div>
 
               {/* Mini TradingView Widget */}
-              <div className="pt-8">
-                <div className="bg-neutral-900/80 border border-neutral-800/50 rounded-[2rem] overflow-hidden shadow-2xl" style={{width: 350}}>
+              <div className="pt-6 w-full flex justify-center md:justify-start">
+                <div className="bg-neutral-900/80 border border-neutral-800/50 rounded-[2rem] overflow-hidden shadow-2xl w-full max-w-[350px]">
                   <TradingViewWidget />
                 </div>
               </div>
