@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import TradingViewWidget from "@/components/ui/TradingViewWidget";
+import Navigation from "@/components/ui/Navigation";
 
 export default function Home() {
   return (
@@ -16,36 +17,13 @@ export default function Home() {
       <div className="absolute top-[20%] right-[-10%] w-[40vw] h-[40vw] bg-neutral-800/50 rounded-full blur-[140px] z-0 pointer-events-none"></div>
       
       {/* Floating TopNavBar */}
-      <div className="fixed top-6 left-0 w-full z-50 flex justify-center px-4 pointer-events-none">
-        <nav className="bg-neutral-950/60 backdrop-blur-md border border-neutral-800/50 rounded-full px-6 py-3 w-full max-w-5xl flex justify-between items-center pointer-events-auto shadow-2xl">
-          <Link href="/" className="font-display-lg text-xl tracking-tighter text-white uppercase flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-red-600 shadow-[0_0_8px_#dc2626]"></div> BONGZWAY
-          </Link>
-          <div className="hidden md:flex gap-8">
-            <Link className="group relative font-label-caps text-sm text-neutral-400 hover:text-white transition-colors uppercase" href="/matrix">
-              Matrix
-              <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-red-600 opacity-0 group-hover:opacity-100 transition-opacity shadow-[0_0_6px_#dc2626]"></span>
-            </Link>
-            <Link className="group relative font-label-caps text-sm text-neutral-400 hover:text-white transition-colors uppercase" href="/robot-results">
-              Robot Results
-              <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-red-600 opacity-0 group-hover:opacity-100 transition-opacity shadow-[0_0_6px_#dc2626]"></span>
-            </Link>
-            <Link className="group relative font-label-caps text-sm text-neutral-400 hover:text-white transition-colors uppercase" href="/student-results">
-              Student Proof
-              <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-red-600 opacity-0 group-hover:opacity-100 transition-opacity shadow-[0_0_6px_#dc2626]"></span>
-            </Link>
-          </div>
-          <Link href="/checkout" className="bg-white text-black font-label-caps text-xs px-5 py-2.5 rounded-full uppercase hover:bg-neutral-200 transition-colors shadow-[0_0_15px_rgba(255,255,255,0.1)] hover:shadow-[0_0_20px_rgba(255,0,0,0.4)] hidden md:block">
-            CHECKOUT
-          </Link>
-        </nav>
-      </div>
+      <Navigation />
 
       <main className="flex-grow z-10 relative pt-32">
         {/* Cinematic Hero Section - Enforced massive oval border-radius */}
         <section className="relative min-h-[85vh] flex items-center overflow-hidden bg-neutral-900/30 backdrop-blur-sm rounded-[3rem] border border-neutral-800/50 mx-4 md:mx-12 mt-4 mb-24">
           
-          <div className="container mx-auto px-6 md:px-12 max-w-7xl relative z-10 flex flex-col md:flex-row items-center h-full">
+          <div className="container mx-auto px-6 md:px-12 max-w-7xl relative z-10 flex flex-col-reverse md:flex-row items-center h-full">
             {/* Left Content */}
             <div className="w-full md:w-[60%] text-center md:text-left flex flex-col items-center md:items-start space-y-6 relative z-20 mt-8 md:mt-0 py-12 md:py-16">
               <div className="inline-flex items-center gap-2.5 border border-neutral-700/60 bg-neutral-900/70 rounded-full px-4 py-1.5 font-label-caps text-[10px] md:text-xs text-neutral-300 uppercase mb-2 backdrop-blur-sm">
@@ -115,16 +93,96 @@ export default function Home() {
             </div>
 
             {/* Right Content — Robot Hero Image */}
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[75%] md:w-[50%] h-[115%] pointer-events-none z-10 flex items-center justify-end opacity-20 md:opacity-100">
+            <div className="w-[80%] sm:w-[60%] md:w-[50%] h-[300px] sm:h-[400px] md:h-[115%] md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2 z-10 flex items-center justify-center md:justify-end mb-4 md:mb-0 pointer-events-none mt-12 md:mt-0">
               <div className="relative w-full h-full" style={{ maskImage: "linear-gradient(to left, black 55%, transparent 100%)", WebkitMaskImage: "linear-gradient(to left, black 55%, transparent 100%)" }}>
                 <img 
-                  className="w-full h-full object-contain object-right" 
+                  className="w-full h-full object-contain md:object-right filter drop-shadow-[0_0_30px_rgba(220,38,38,0.5)]" 
                   alt="Specter X Pro+ Robot" 
                   src="/images/robot-hero.png"
                 />
               </div>
             </div>
 
+          </div>
+        </section>
+
+        {/* Features Section */}
+        <section className="py-24 px-4 md:px-12 container mx-auto max-w-7xl relative z-10">
+          <div className="mb-16 text-center">
+            <h2 className="font-headline-lg text-4xl sm:text-5xl uppercase tracking-tighter text-white">
+              CHART <span className="text-red-500">SCANNER</span>
+            </h2>
+            <p className="font-body-md text-neutral-400 mt-4 max-w-2xl mx-auto text-sm sm:text-base">
+              A built-in feature of the Alpha-ScalpStrike V3 robot — upload a screenshot of any trading chart and let it read the structure, candles and momentum, then return a possible direction for you.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-neutral-900 border border-neutral-800 p-8 rounded-[2rem] flex flex-col gap-4">
+              <div className="w-12 h-12 rounded-full bg-red-600/20 text-red-500 flex items-center justify-center">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+              </div>
+              <h3 className="text-xl font-headline-lg text-white uppercase">Upload Screenshot</h3>
+              <p className="text-neutral-400 text-sm">Drop a chart image from any broker or platform.</p>
+            </div>
+            
+            <div className="bg-neutral-900 border border-neutral-800 p-8 rounded-[2rem] flex flex-col gap-4">
+              <div className="w-12 h-12 rounded-full bg-red-600/20 text-red-500 flex items-center justify-center">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 3h6v6H3z"></path><path d="M15 3h6v6h-6z"></path><path d="M15 15h6v6h-6z"></path><path d="M3 15h6v6H3z"></path></svg>
+              </div>
+              <h3 className="text-xl font-headline-lg text-white uppercase">Smart Pattern Scan</h3>
+              <p className="text-neutral-400 text-sm">The robot reads structure, candles and market momentum.</p>
+            </div>
+            
+            <div className="bg-neutral-900 border border-neutral-800 p-8 rounded-[2rem] flex flex-col gap-4">
+              <div className="w-12 h-12 rounded-full bg-red-600/20 text-red-500 flex items-center justify-center">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+              </div>
+              <h3 className="text-xl font-headline-lg text-white uppercase">Possible Direction</h3>
+              <p className="text-neutral-400 text-sm">Receive a clear BUY or SELL signal.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* How It Works Section */}
+        <section className="py-24 px-4 md:px-12 container mx-auto max-w-7xl relative z-10">
+          <div className="mb-16 text-center">
+            <h2 className="font-headline-lg text-4xl sm:text-5xl uppercase tracking-tighter text-white">
+              HOW IT <span className="text-red-500">WORKS</span>
+            </h2>
+            <p className="font-body-md text-neutral-400 mt-4">
+              From purchase to profit — in four simple steps.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="bg-neutral-900 border border-neutral-800 p-8 rounded-[2rem] flex flex-col gap-2 relative overflow-hidden group hover:border-red-500/30 transition-colors">
+              <div className="absolute right-[-10px] top-[-10px] text-[8rem] font-black text-neutral-800/20 leading-none group-hover:text-red-900/10 transition-colors">01</div>
+              <div className="text-red-500 font-label-caps text-xs uppercase mb-2">Step 01</div>
+              <h3 className="text-xl font-headline-lg text-white uppercase relative z-10">Choose Your Version</h3>
+              <p className="text-neutral-400 text-sm relative z-10">Pick the copy that matches your device — Android, iOS or PC.</p>
+            </div>
+            
+            <div className="bg-neutral-900 border border-neutral-800 p-8 rounded-[2rem] flex flex-col gap-2 relative overflow-hidden group hover:border-red-500/30 transition-colors">
+              <div className="absolute right-[-10px] top-[-10px] text-[8rem] font-black text-neutral-800/20 leading-none group-hover:text-red-900/10 transition-colors">02</div>
+              <div className="text-red-500 font-label-caps text-xs uppercase mb-2">Step 02</div>
+              <h3 className="text-xl font-headline-lg text-white uppercase relative z-10">Make Payment</h3>
+              <p className="text-neutral-400 text-sm relative z-10">Pay via Bank Transfer (FNB) or USDT TRC20 for international.</p>
+            </div>
+
+            <div className="bg-neutral-900 border border-neutral-800 p-8 rounded-[2rem] flex flex-col gap-2 relative overflow-hidden group hover:border-red-500/30 transition-colors">
+              <div className="absolute right-[-10px] top-[-10px] text-[8rem] font-black text-neutral-800/20 leading-none group-hover:text-red-900/10 transition-colors">03</div>
+              <div className="text-red-500 font-label-caps text-xs uppercase mb-2">Step 03</div>
+              <h3 className="text-xl font-headline-lg text-white uppercase relative z-10">Send Proof</h3>
+              <p className="text-neutral-400 text-sm relative z-10">Send your proof of payment to us on WhatsApp.</p>
+            </div>
+
+            <div className="bg-neutral-900 border border-neutral-800 p-8 rounded-[2rem] flex flex-col gap-2 relative overflow-hidden group hover:border-red-500/30 transition-colors">
+              <div className="absolute right-[-10px] top-[-10px] text-[8rem] font-black text-neutral-800/20 leading-none group-hover:text-red-900/10 transition-colors">04</div>
+              <div className="text-red-500 font-label-caps text-xs uppercase mb-2">Step 04</div>
+              <h3 className="text-xl font-headline-lg text-white uppercase relative z-10">Get Started</h3>
+              <p className="text-neutral-400 text-sm relative z-10">Receive your setup instructions and start trading on autopilot.</p>
+            </div>
           </div>
         </section>
 
