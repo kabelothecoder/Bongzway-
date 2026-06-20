@@ -1,26 +1,119 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-on-primary-container: #5c0000;
+  --color-surface-container-high: #2a2a2a;
+  --color-tertiary-container: #909191;
+  --color-on-tertiary-fixed-variant: #454747;
+  --color-error-container: #93000a;
+  --color-surface-bright: #393939;
+  --color-inverse-surface: #e5e2e1;
+  --color-secondary-fixed-dim: #c8c6c5;
+  --color-surface-dim: #131313;
+  --color-secondary: #c8c6c5;
+  --color-primary-fixed-dim: #ffb4a8;
+  --color-on-background: #e5e2e1;
+  --color-secondary-container: #4a4949;
+  --color-on-primary-fixed: #410000;
+  --color-surface-tint: #ffb4a8;
+  --color-on-secondary-fixed-variant: #474646;
+  --color-error: #ffb4ab;
+  --color-on-tertiary-container: #282a2a;
+  --color-on-primary: #690100;
+  --color-primary: #ff0000;
+  --color-tertiary-fixed-dim: #c6c6c7;
+  --color-on-tertiary: #2f3131;
+  --color-primary-container: #ff5540;
+  --color-inverse-primary: #c00100;
+  --color-on-secondary-container: #bab8b7;
+  --color-secondary-fixed: #e5e2e1;
+  --color-on-surface: #e5e2e1;
+  --color-outline-variant: #603e39;
+  --color-outline: #b18780;
+  --color-on-error-container: #ffdad6;
+  --color-surface-container: #20201f;
+  --color-surface-container-lowest: #000000;
+  --color-tertiary-fixed: #e2e2e2;
+  --color-on-tertiary-fixed: #1a1c1c;
+  --color-surface: #121212;
+  --color-surface-variant: #1a1a1a;
+  --color-on-secondary-fixed: #1c1b1b;
+  --color-primary-fixed: #ffdad4;
+  --color-surface-container-highest: #353535;
+  --color-surface-container-low: #1c1b1b;
+  --color-on-error: #690005;
+  --color-background: #000000;
+  --color-inverse-on-surface: #313030;
+  --color-on-primary-fixed-variant: #930100;
+  --color-on-secondary: #313030;
+  --color-tertiary: #c6c6c7;
+  --color-on-surface-variant: #ebbbb4;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --spacing-gutter: 24px;
+  --spacing-container-max: 1280px;
+  --spacing-unit: 8px;
+  --spacing-margin-mobile: 16px;
+  --spacing-margin-desktop: 48px;
+
+  --font-headline-lg: "Hanken Grotesk";
+  --font-label-caps: "JetBrains Mono";
+  --font-headline-lg-mobile: "Hanken Grotesk";
+  --font-display-lg: "Hanken Grotesk";
+  --font-body-md: "Hanken Grotesk";
+  --font-data-point: "JetBrains Mono";
+  --font-sans: "Hanken Grotesk";
+
+  --animate-scroll-up: scrollUp 40s linear infinite;
+  --animate-scroll-down: scrollDown 40s linear infinite;
+
+  @keyframes scrollUp {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
+  }
+  
+  @keyframes scrollDown {
+    0% { transform: translateY(-50%); }
+    100% { transform: translateY(0); }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    @apply border-surface-variant outline-primary/50;
+  }
+  body {
+    @apply bg-background text-on-surface;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+
+.glass-card {
+  background: rgba(18, 18, 18, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glow-border {
+  border: 1px solid transparent;
+  background: linear-gradient(#121212, #121212) padding-box,
+              linear-gradient(135deg, #FF0000, #330000) border-box;
+  box-shadow: 0 0 15px -5px rgba(255, 0, 0, 0.5);
+}
+
+.text-gradient {
+  background: linear-gradient(to right, #ffffff, #aaaaaa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.testimonial-fade-mask {
+  mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
 }

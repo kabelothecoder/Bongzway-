@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BONGZWAY - Automate Your Edge</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700;800&amp;family=JetBrains+Mono:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#5c0000",
+                        "surface-container-high": "#2a2a2a",
+                        "tertiary-container": "#909191",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "error-container": "#93000a",
+                        "surface-bright": "#393939",
+                        "inverse-surface": "#e5e2e1",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "surface-dim": "#131313",
+                        "secondary": "#c8c6c5",
+                        "primary-fixed-dim": "#ffb4a8",
+                        "on-background": "#e5e2e1",
+                        "secondary-container": "#4a4949",
+                        "on-primary-fixed": "#410000",
+                        "surface-tint": "#ffb4a8",
+                        "on-secondary-fixed-variant": "#474646",
+                        "error": "#ffb4ab",
+                        "on-tertiary-container": "#282a2a",
+                        "on-primary": "#690100",
+                        "primary": "#ff0000", /* Adjusted to crimson based on style guide */
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "on-tertiary": "#2f3131",
+                        "primary-container": "#ff5540",
+                        "inverse-primary": "#c00100",
+                        "on-secondary-container": "#bab8b7",
+                        "secondary-fixed": "#e5e2e1",
+                        "on-surface": "#e5e2e1",
+                        "outline-variant": "#603e39",
+                        "outline": "#b18780",
+                        "on-error-container": "#ffdad6",
+                        "surface-container": "#20201f",
+                        "surface-container-lowest": "#000000", /* Deep black base */
+                        "tertiary-fixed": "#e2e2e2",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "surface": "#121212", /* Charcoal surface */
+                        "surface-variant": "#1a1a1a",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "primary-fixed": "#ffdad4",
+                        "surface-container-highest": "#353535",
+                        "surface-container-low": "#1c1b1b",
+                        "on-error": "#690005",
+                        "background": "#000000",
+                        "inverse-on-surface": "#313030",
+                        "on-primary-fixed-variant": "#930100",
+                        "on-secondary": "#313030",
+                        "tertiary": "#c6c6c7",
+                        "on-surface-variant": "#ebbbb4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "unit": "8px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "48px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Hanken Grotesk"],
+                        "label-caps": ["JetBrains Mono"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "data-point": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "display-lg-mobile": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "data-point": ["18px", { "lineHeight": "1.0", "fontWeight": "700" }]
+                    },
+                    "animation": {
+                        "scroll-up": "scrollUp 40s linear infinite",
+                        "scroll-down": "scrollDown 40s linear infinite"
+                    },
+                    "keyframes": {
+                        "scrollUp": {
+                            "0%": { "transform": "translateY(0)" },
+                            "100%": { "transform": "translateY(-50%)" }
+                        },
+                        "scrollDown": {
+                            "0%": { "transform": "translateY(-50%)" },
+                            "100%": { "transform": "translateY(0)" }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(18, 18, 18, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .glow-border {
+            border: 1px solid transparent;
+            background: linear-gradient(#121212, #121212) padding-box,
+                        linear-gradient(135deg, #FF0000, #330000) border-box;
+            box-shadow: 0 0 15px -5px rgba(255, 0, 0, 0.5);
+        }
+        .text-gradient {
+            background: linear-gradient(to right, #ffffff, #aaaaaa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .testimonial-fade-mask {
+            mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen flex flex-col selection:bg-primary selection:text-white relative">
+<!-- Ambient Grid Background -->
+<div class="fixed inset-0 z-0 opacity-[0.03] pointer-events-none" style="background-image: linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px); background-size: 48px 48px;"></div>
+<!-- TopNavBar -->
+<nav class="bg-background/80 dark:bg-background/80 backdrop-blur-xl docked full-width top-0 sticky z-50 border-b border-outline-variant/30 flat no shadows">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 w-full max-w-container-max mx-auto">
+<div class="font-display-lg text-headline-lg-mobile md:text-headline-lg tracking-tighter text-on-surface dark:text-on-surface uppercase">BONGZWAY</div>
+<div class="hidden md:flex gap-8">
+<a class="font-label-caps text-label-caps text-primary border-b-2 border-primary pb-1 uppercase" href="#">Home</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors hover:text-primary transition-all duration-300 uppercase" href="#">Robot Results</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors hover:text-primary transition-all duration-300 uppercase" href="#">Student Proof</a>
+</div>
+<button class="bg-primary text-white font-label-caps text-label-caps px-6 py-3 uppercase scale-95 active:opacity-80 transition-transform hidden md:block">
+                BUY EA
+            </button>
+</div>
+</nav>
+<main class="flex-grow z-10 relative">
+<!-- Hero Section -->
+<section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden border-b border-surface-variant">
+<!-- Background Image -->
+<div class="absolute inset-0 z-0 opacity-40 md:opacity-60">
+<img class="w-full h-full object-cover object-top" data-alt="A hyper-realistic close-up of a futuristic robot bust rendered in glossy crimson red and obsidian black. The robot has a sleek, faceless visor that reflects ambient light, suggesting advanced AI capabilities. The lighting is high-contrast, dramatic, and cinematic, emerging from an absolute black background to highlight the mechanical precision and powerful aesthetic of the machine. The mood is authoritative, technological, and intense." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJ4VH_XA4AqUSsCnCWVU0S_TugErdkjsXOkMWsS68aNrLv-HW6lploPTA9DmlV7sN5D1tOAbRI56WqlkFQXi47y_nU0SGC0kwUAjARXs-opdk6SechjS_7H8Ry08g_nEDG4EK8qR-sOLd6Fe15MbHU2u7DdmEvxj1xrimMGAJ8mUhfEYULaW0vUKVB-j7g4cIfM8UWWPMy8XtT9HbL3_ywgGJa8GsMJ_niUGtMIWz-9yWMUQx_xakTZD0wNzOwz56fZs9-mFyURptN"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-background via-background/50 to-transparent md:w-2/3"></div>
+</div>
+<div class="container mx-auto px-margin-mobile md:px-margin-desktop max-w-container-max relative z-10 flex flex-col md:flex-row items-center pt-20 pb-12">
+<div class="w-full md:w-1/2 text-left space-y-6">
+<div class="inline-block border border-primary/30 bg-primary/10 px-4 py-2 font-label-caps text-label-caps text-primary uppercase mb-4">
+                        Specter X Pro+ Active
+                    </div>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg uppercase tracking-tighter text-white">
+                        Automate Your Edge.<br/>
+<span class="text-primary">Trade Like an Institution.</span>
+</h1>
+<p class="font-body-md text-body-md text-tertiary max-w-lg md:text-lg">
+                        Deploy elite algorithmic trading systems designed for absolute precision. Maximize win rates, eliminate emotional trading, and execute with robotic efficiency.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4 pt-6">
+<button class="bg-primary text-white font-label-caps text-label-caps px-8 py-4 uppercase hover:bg-primary/90 transition-colors w-full sm:w-auto text-center border border-primary glow-border">
+                            Get Started
+                        </button>
+<button class="bg-transparent border border-primary/50 text-white font-label-caps text-label-caps px-8 py-4 uppercase hover:bg-primary/10 transition-colors w-full sm:w-auto text-center">
+                            View Live Results
+                        </button>
+</div>
+<div class="flex gap-4 pt-8 opacity-70">
+<span class="bg-white text-black font-label-caps text-[10px] px-3 py-1 rounded-full flex items-center gap-1 uppercase"><span class="material-symbols-outlined text-[14px]">android</span> Android</span>
+<span class="bg-white text-black font-label-caps text-[10px] px-3 py-1 rounded-full flex items-center gap-1 uppercase"><span class="material-symbols-outlined text-[14px]">apps</span> Apple (iOS)</span>
+<span class="bg-white text-black font-label-caps text-[10px] px-3 py-1 rounded-full flex items-center gap-1 uppercase"><span class="material-symbols-outlined text-[14px]">desktop_windows</span> Windows</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Features Bento Grid -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop container mx-auto max-w-container-max relative">
+<div class="mb-12 text-left">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg uppercase tracking-tighter"><span class="text-primary">//</span> System Capabilities</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Feature 1 -->
+<div class="glass-card p-8 glow-border flex flex-col gap-4">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">precision_manufacturing</span>
+<h3 class="font-data-point text-data-point uppercase text-white">98% Accuracy</h3>
+<p class="font-body-md text-sm text-tertiary">Advanced pattern recognition algorithms ensure near-perfect entry and exit points across all market conditions.</p>
+</div>
+<!-- Feature 2 -->
+<div class="glass-card p-8 flex flex-col gap-4">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">shield</span>
+<h3 class="font-data-point text-data-point uppercase text-white">Low Drawdown</h3>
+<p class="font-body-md text-sm text-tertiary">Strict risk management protocols dynamically adjust Stop Loss and Take Profit levels to protect capital.</p>
+</div>
+<!-- Feature 3 -->
+<div class="glass-card p-8 flex flex-col gap-4">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">candlestick_chart</span>
+<h3 class="font-data-point text-data-point uppercase text-white">Multi-Pair Processing</h3>
+<p class="font-body-md text-sm text-tertiary">Simultaneously analyze and execute trades on Gold, major currencies, indices, and synthetic assets.</p>
+</div>
+</div>
+</section>
+<!-- Broker Partner Section -->
+<section class="py-12 border-y border-surface-variant bg-surface-variant/30">
+<div class="container mx-auto px-margin-mobile md:px-margin-desktop max-w-container-max">
+<div class="flex flex-col md:flex-row items-center justify-between gap-8 glass-card p-8 md:p-12 border border-primary/20">
+<div class="flex-1 space-y-4">
+<div class="font-label-caps text-label-caps text-primary uppercase">Recommended Infrastructure</div>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg uppercase tracking-tighter text-white">Trade with Zero Friction</h2>
+<p class="text-tertiary font-body-md">For optimal EA performance, ultra-low latency, and tight spreads, deploy Specter X Pro+ exclusively on our preferred brokerage network.</p>
+</div>
+<div class="flex-1 flex flex-col items-center gap-6">
+<div class="flex gap-4 items-center">
+<span class="text-white font-headline-lg text-2xl uppercase tracking-widest border-b border-primary pb-2">Deriv</span>
+<span class="text-white/50 px-4">|</span>
+<span class="text-white font-headline-lg text-2xl uppercase tracking-widest border-b border-primary pb-2">Exness</span>
+</div>
+<button class="bg-primary text-white font-label-caps text-label-caps px-8 py-3 uppercase w-full max-w-xs hover:bg-primary/80 transition">
+                            Open Partner Account
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Pricing Section (Dedicated Version Cards) -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop container mx-auto max-w-container-max relative">
+<div class="absolute inset-0 bg-neutral-900/20 rounded-[3rem] mix-blend-overlay pointer-events-none" style="background-image: radial-gradient(circle at center, rgba(255,0,0,0.05) 0%, transparent 70%);"></div>
+<div class="mb-16 text-center relative z-10">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg uppercase tracking-tighter text-white">Select Your Platform</h2>
+<p class="font-body-md text-tertiary mt-2">Choose the version that aligns with your trading lifestyle.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+<!-- Android Card -->
+<div class="bg-surface border border-surface-variant p-8 relative overflow-hidden group hover:border-primary/50 transition-colors flex flex-col">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl -mr-10 -mt-10 group-hover:bg-primary/20 transition-all"></div>
+<div class="relative z-10 flex-grow flex flex-col">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-primary text-3xl">android</span>
+<h3 class="font-headline-lg text-2xl text-white uppercase">Android</h3>
+</div>
+<div class="mb-6">
+<div class="font-data-point text-3xl text-white">R1199.99</div>
+<div class="text-tertiary text-sm">~ $74 USD</div>
+</div>
+<ul class="space-y-4 mb-8 flex-grow">
+<li class="flex items-start gap-3 text-sm text-tertiary"><span class="material-symbols-outlined text-primary text-[18px] mt-0.5">check_circle</span> <span>MT4/MT5 Mobile integration</span></li>
+<li class="flex items-start gap-3 text-sm text-tertiary"><span class="material-symbols-outlined text-primary text-[18px] mt-0.5">check_circle</span> <span>24/7 background hosting support</span></li>
+<li class="flex items-start gap-3 text-sm text-tertiary"><span class="material-symbols-outlined text-primary text-[18px] mt-0.5">check_circle</span> <span>Full synthetics &amp; currencies</span></li>
+<li class="flex items-start gap-3 text-sm text-tertiary"><span class="material-symbols-outlined text-primary text-[18px] mt-0.5">check_circle</span> <span>Lifetime license</span></li>
+</ul>
+<button class="w-full border border-primary/50 text-primary font-label-caps text-label-caps py-4 uppercase hover:bg-primary hover:text-white transition-colors mt-auto">
+                            Purchase Android
+                        </button>
+</div>
+</div>
+<!-- Desktop Card (Featured) -->
+<div class="bg-surface border border-primary p-8 relative overflow-hidden group glow-border scale-105 z-10 shadow-2xl shadow-primary/10 flex flex-col">
+<div class="absolute top-0 right-0 bg-primary text-white font-label-caps text-[10px] px-3 py-1 uppercase rounded-bl-lg">Pro Edition</div>
+<div class="relative z-10 pt-4 flex-grow flex flex-col">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-white text-3xl">desktop_windows</span>
+<h3 class="font-headline-lg text-2xl text-white uppercase">Desktop</h3>
+</div>
+<div class="mb-6">
+<div class="font-data-point text-3xl text-primary">R4499.99</div>
+<div class="text-tertiary text-sm">~ $274 USD</div>
+</div>
+<ul class="space-y-4 mb-8 flex-grow">
+<li class="flex items-start gap-3 text-sm text-tertiary"><span class="material-symbols-outlined text-primary text-[18px] mt-0.5">check_circle</span> <span class="text-white">Max hardware thread execution</span></li>
+<li class="flex items-start gap-3 text-sm text-tertiary"><span class="material-symbols-outlined text-primary text-[18px] mt-0.5">check_circle</span> <span class="text-white">Automated multi-chart scalper mode</span></li>
+<li class="flex items-start gap-3 text-sm text-tertiary"><span class="material-symbols-outlined text-primary text-[18px] mt-0.5">check_circle</span> <span class="text-white">Absolute latency optimization</span></li>
+<li class="flex items-start gap-3 text-sm text-tertiary"><span class="material-symbols-outlined text-primary text-[18px] mt-0.5">check_circle</span> <span class="text-white">Full algorithmic control panel</span></li>
+</ul>
+<button class="w-full bg-primary text-white font-label-caps text-label-caps py-4 uppercase hover:bg-primary/80 transition-colors mt-auto">
+                            Purchase Windows
+                        </button>
+</div>
+</div>
+<!-- iOS Card -->
+<div class="bg-surface border border-surface-variant p-8 relative overflow-hidden group hover:border-primary/50 transition-colors flex flex-col">
+<div class="relative z-10 flex-grow flex flex-col">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-primary text-3xl">phone_iphone</span>
+<h3 class="font-headline-lg text-2xl text-white uppercase">Apple (iOS)</h3>
+</div>
+<div class="mb-6">
+<div class="font-data-point text-3xl text-white">R1999.99</div>
+<div class="text-tertiary text-sm">~ $122 USD</div>
+</div>
+<ul class="space-y-4 mb-8 flex-grow">
+<li class="flex items-start gap-3 text-sm text-tertiary"><span class="material-symbols-outlined text-primary text-[18px] mt-0.5">check_circle</span> <span>Mobile terminal compatibility via secure cloud bridging</span></li>
+<li class="flex items-start gap-3 text-sm text-tertiary"><span class="material-symbols-outlined text-primary text-[18px] mt-0.5">check_circle</span> <span>98% accuracy presets</span></li>
+<li class="flex items-start gap-3 text-sm text-tertiary"><span class="material-symbols-outlined text-primary text-[18px] mt-0.5">check_circle</span> <span>Instant push notifications</span></li>
+</ul>
+<button class="w-full border border-primary/50 text-primary font-label-caps text-label-caps py-4 uppercase hover:bg-primary hover:text-white transition-colors mt-auto">
+                            Purchase iOS
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials Grid Section -->
+<section class="py-24 bg-surface-container-lowest border-y border-surface-variant overflow-hidden">
+<div class="container mx-auto px-margin-mobile md:px-margin-desktop max-w-container-max">
+<div class="mb-16 text-center">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg uppercase tracking-tighter text-white">Verified <span class="text-primary">Results</span></h2>
+<p class="font-body-md text-tertiary mt-2">Join thousands of profitable traders globally.</p>
+</div>
+<div class="h-[600px] flex gap-6 overflow-hidden testimonial-fade-mask relative">
+<!-- Column 1: Scrolls Up -->
+<div class="flex-1 flex flex-col gap-6 animate-scroll-up w-full md:w-1/3">
+<!-- Duplicate content to ensure smooth infinite scroll -->
+<div class="flex flex-col gap-6">
+<div class="p-8 rounded-2xl border border-neutral-800 bg-neutral-950/80 backdrop-blur-md shadow-xl">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="font-label-caps text-white text-lg">Thabo M.</h4>
+<p class="text-tertiary text-sm">Gauteng, SA</p>
+</div>
+<span class="material-symbols-outlined text-primary">format_quote</span>
+</div>
+<p class="text-tertiary font-body-md text-sm leading-relaxed">"The Specter X Pro+ completely changed my approach to trading synthetics. The desktop version's latency optimization is unmatched."</p>
+</div>
+<div class="p-8 rounded-2xl border border-neutral-800 bg-neutral-950/80 backdrop-blur-md shadow-xl">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="font-label-caps text-white text-lg">Sarah K.</h4>
+<p class="text-tertiary text-sm">London, UK</p>
+</div>
+<span class="material-symbols-outlined text-primary">format_quote</span>
+</div>
+<p class="text-tertiary font-body-md text-sm leading-relaxed">"Set it up on my VPS and haven't looked back. Consistent 4-6% weekly growth with barely any drawdown. Phenomenal software."</p>
+</div>
+<div class="p-8 rounded-2xl border border-neutral-800 bg-neutral-950/80 backdrop-blur-md shadow-xl">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="font-label-caps text-white text-lg">David O.</h4>
+<p class="text-tertiary text-sm">Lagos, NG</p>
+</div>
+<span class="material-symbols-outlined text-primary">format_quote</span>
+</div>
+<p class="text-tertiary font-body-md text-sm leading-relaxed">"The Android integration is flawless. I monitor my trades while at work and the push notifications are instant."</p>
+</div>
+</div>
+<!-- Duplicated content for seamless loop -->
+<div class="flex flex-col gap-6">
+<div class="p-8 rounded-2xl border border-neutral-800 bg-neutral-950/80 backdrop-blur-md shadow-xl">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="font-label-caps text-white text-lg">Thabo M.</h4>
+<p class="text-tertiary text-sm">Gauteng, SA</p>
+</div>
+<span class="material-symbols-outlined text-primary">format_quote</span>
+</div>
+<p class="text-tertiary font-body-md text-sm leading-relaxed">"The Specter X Pro+ completely changed my approach to trading synthetics. The desktop version's latency optimization is unmatched."</p>
+</div>
+<div class="p-8 rounded-2xl border border-neutral-800 bg-neutral-950/80 backdrop-blur-md shadow-xl">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="font-label-caps text-white text-lg">Sarah K.</h4>
+<p class="text-tertiary text-sm">London, UK</p>
+</div>
+<span class="material-symbols-outlined text-primary">format_quote</span>
+</div>
+<p class="text-tertiary font-body-md text-sm leading-relaxed">"Set it up on my VPS and haven't looked back. Consistent 4-6% weekly growth with barely any drawdown. Phenomenal software."</p>
+</div>
+<div class="p-8 rounded-2xl border border-neutral-800 bg-neutral-950/80 backdrop-blur-md shadow-xl">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="font-label-caps text-white text-lg">David O.</h4>
+<p class="text-tertiary text-sm">Lagos, NG</p>
+</div>
+<span class="material-symbols-outlined text-primary">format_quote</span>
+</div>
+<p class="text-tertiary font-body-md text-sm leading-relaxed">"The Android integration is flawless. I monitor my trades while at work and the push notifications are instant."</p>
+</div>
+</div>
+</div>
+<!-- Column 2: Scrolls Down (Hidden on mobile for better fit, or visible if layout allows. Showing on md+) -->
+<div class="hidden md:flex flex-1 flex-col gap-6 animate-scroll-down w-full md:w-1/3">
+<div class="flex flex-col gap-6">
+<div class="p-8 rounded-2xl border border-neutral-800 bg-neutral-950/80 backdrop-blur-md shadow-xl">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="font-label-caps text-white text-lg">Elena V.</h4>
+<p class="text-tertiary text-sm">Dubai, UAE</p>
+</div>
+<span class="material-symbols-outlined text-primary">format_quote</span>
+</div>
+<p class="text-tertiary font-body-md text-sm leading-relaxed">"Been using the iOS version for 3 months. The cloud bridging works perfectly and I haven't missed a single setup."</p>
+</div>
+<div class="p-8 rounded-2xl border border-neutral-800 bg-neutral-950/80 backdrop-blur-md shadow-xl">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="font-label-caps text-white text-lg">Michael T.</h4>
+<p class="text-tertiary text-sm">Cape Town, SA</p>
+</div>
+<span class="material-symbols-outlined text-primary">format_quote</span>
+</div>
+<p class="text-tertiary font-body-md text-sm leading-relaxed">"Worth every cent of the R4499. The multi-chart scalper mode handles my entire portfolio automatically."</p>
+</div>
+<div class="p-8 rounded-2xl border border-neutral-800 bg-neutral-950/80 backdrop-blur-md shadow-xl">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="font-label-caps text-white text-lg">Lerato P.</h4>
+<p class="text-tertiary text-sm">Durban, SA</p>
+</div>
+<span class="material-symbols-outlined text-primary">format_quote</span>
+</div>
+<p class="text-tertiary font-body-md text-sm leading-relaxed">"The 98% accuracy isn't a joke. It genuinely filters out bad setups and only takes high-probability trades."</p>
+</div>
+</div>
+<!-- Duplicated content for seamless loop -->
+<div class="flex flex-col gap-6">
+<div class="p-8 rounded-2xl border border-neutral-800 bg-neutral-950/80 backdrop-blur-md shadow-xl">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="font-label-caps text-white text-lg">Elena V.</h4>
+<p class="text-tertiary text-sm">Dubai, UAE</p>
+</div>
+<span class="material-symbols-outlined text-primary">format_quote</span>
+</div>
+<p class="text-tertiary font-body-md text-sm leading-relaxed">"Been using the iOS version for 3 months. The cloud bridging works perfectly and I haven't missed a single setup."</p>
+</div>
+<div class="p-8 rounded-2xl border border-neutral-800 bg-neutral-950/80 backdrop-blur-md shadow-xl">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="font-label-caps text-white text-lg">Michael T.</h4>
+<p class="text-tertiary text-sm">Cape Town, SA</p>
+</div>
+<span class="material-symbols-outlined text-primary">format_quote</span>
+</div>
+<p class="text-tertiary font-body-md text-sm leading-relaxed">"Worth every cent of the R4499. The multi-chart scalper mode handles my entire portfolio automatically."</p>
+</div>
+<div class="p-8 rounded-2xl border border-neutral-800 bg-neutral-950/80 backdrop-blur-md shadow-xl">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="font-label-caps text-white text-lg">Lerato P.</h4>
+<p class="text-tertiary text-sm">Durban, SA</p>
+</div>
+<span class="material-symbols-outlined text-primary">format_quote</span>
+</div>
+<p class="text-tertiary font-body-md text-sm leading-relaxed">"The 98% accuracy isn't a joke. It genuinely filters out bad setups and only takes high-probability trades."</p>
+</div>
+</div>
+</div>
+<!-- Column 3: Scrolls Up -->
+<div class="hidden lg:flex flex-1 flex-col gap-6 animate-scroll-up w-full md:w-1/3" style="animation-delay: -15s;">
+<div class="flex flex-col gap-6">
+<div class="p-8 rounded-2xl border border-neutral-800 bg-neutral-950/80 backdrop-blur-md shadow-xl">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="font-label-caps text-white text-lg">James W.</h4>
+<p class="text-tertiary text-sm">Sydney, AU</p>
+</div>
+<span class="material-symbols-outlined text-primary">format_quote</span>
+</div>
+<p class="text-tertiary font-body-md text-sm leading-relaxed">"Finally an EA that respects risk management. The low drawdown is what sold me, and it delivers."</p>
+</div>
+<div class="p-8 rounded-2xl border border-neutral-800 bg-neutral-950/80 backdrop-blur-md shadow-xl">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="font-label-caps text-white text-lg">Sipho N.</h4>
+<p class="text-tertiary text-sm">Pretoria, SA</p>
+</div>
+<span class="material-symbols-outlined text-primary">format_quote</span>
+</div>
+<p class="text-tertiary font-body-md text-sm leading-relaxed">"Using this with Deriv on the Android app. Smooth execution, no lag. Very impressive piece of code."</p>
+</div>
+<div class="p-8 rounded-2xl border border-neutral-800 bg-neutral-950/80 backdrop-blur-md shadow-xl">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="font-label-caps text-white text-lg">Anita G.</h4>
+<p class="text-tertiary text-sm">Toronto, CA</p>
+</div>
+<span class="material-symbols-outlined text-primary">format_quote</span>
+</div>
+<p class="text-tertiary font-body-md text-sm leading-relaxed">"The algorithmic control panel on the desktop version gives me the flexibility I need to tweak things during volatile news."</p>
+</div>
+</div>
+<!-- Duplicated content for seamless loop -->
+<div class="flex flex-col gap-6">
+<div class="p-8 rounded-2xl border border-neutral-800 bg-neutral-950/80 backdrop-blur-md shadow-xl">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="font-label-caps text-white text-lg">James W.</h4>
+<p class="text-tertiary text-sm">Sydney, AU</p>
+</div>
+<span class="material-symbols-outlined text-primary">format_quote</span>
+</div>
+<p class="text-tertiary font-body-md text-sm leading-relaxed">"Finally an EA that respects risk management. The low drawdown is what sold me, and it delivers."</p>
+</div>
+<div class="p-8 rounded-2xl border border-neutral-800 bg-neutral-950/80 backdrop-blur-md shadow-xl">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="font-label-caps text-white text-lg">Sipho N.</h4>
+<p class="text-tertiary text-sm">Pretoria, SA</p>
+</div>
+<span class="material-symbols-outlined text-primary">format_quote</span>
+</div>
+<p class="text-tertiary font-body-md text-sm leading-relaxed">"Using this with Deriv on the Android app. Smooth execution, no lag. Very impressive piece of code."</p>
+</div>
+<div class="p-8 rounded-2xl border border-neutral-800 bg-neutral-950/80 backdrop-blur-md shadow-xl">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="font-label-caps text-white text-lg">Anita G.</h4>
+<p class="text-tertiary text-sm">Toronto, CA</p>
+</div>
+<span class="material-symbols-outlined text-primary">format_quote</span>
+</div>
+<p class="text-tertiary font-body-md text-sm leading-relaxed">"The algorithmic control panel on the desktop version gives me the flexibility I need to tweak things during volatile news."</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical FAQ -->
+<section class="py-24 bg-surface-variant/20 border-t border-surface-variant">
+<div class="container mx-auto px-margin-mobile md:px-margin-desktop max-w-3xl">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg uppercase tracking-tighter text-center mb-12"><span class="text-primary">System</span> Specs &amp; FAQ</h2>
+<div class="space-y-4">
+<!-- FAQ Item 1 -->
+<details class="group bg-surface border border-surface-variant p-6 cursor-pointer open:border-primary/50 transition-colors">
+<summary class="font-data-point text-white uppercase flex justify-between items-center list-none outline-none">
+                            Does it work on MetaTrader 4 &amp; 5?
+                            <span class="material-symbols-outlined text-primary group-open:rotate-180 transition-transform">keyboard_arrow_down</span>
+</summary>
+<p class="font-body-md text-tertiary mt-4 text-sm leading-relaxed border-t border-surface-variant pt-4">
+                            Yes, Specter X Pro+ is fully compatible with both MT4 and MT5 platforms. The installation package includes specific versions optimized for each engine to ensure maximum execution speed.
+                        </p>
+</details>
+<!-- FAQ Item 2 -->
+<details class="group bg-surface border border-surface-variant p-6 cursor-pointer open:border-primary/50 transition-colors">
+<summary class="font-data-point text-white uppercase flex justify-between items-center list-none outline-none">
+                            What is the minimum recommended capital?
+                            <span class="material-symbols-outlined text-primary group-open:rotate-180 transition-transform">keyboard_arrow_down</span>
+</summary>
+<p class="font-body-md text-tertiary mt-4 text-sm leading-relaxed border-t border-surface-variant pt-4">
+                            While the EA can technically operate on micro accounts, we recommend a minimum balance of $500 for optimal risk management deployment and to fully utilize the multi-pair processing capabilities without over-leveraging.
+                        </p>
+</details>
+<!-- FAQ Item 3 -->
+<details class="group bg-surface border border-surface-variant p-6 cursor-pointer open:border-primary/50 transition-colors">
+<summary class="font-data-point text-white uppercase flex justify-between items-center list-none outline-none">
+                            Do I need a VPS?
+                            <span class="material-symbols-outlined text-primary group-open:rotate-180 transition-transform">keyboard_arrow_down</span>
+</summary>
+<p class="font-body-md text-tertiary mt-4 text-sm leading-relaxed border-t border-surface-variant pt-4">
+                            Yes, a Virtual Private Server (VPS) is highly recommended. The EA requires 24/7 uptime to monitor markets continuously and execute trades without latency. Operating from a standard PC introduces risks of power failure or internet disconnection.
+                        </p>
+</details>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest full-width py-12 border-t border-outline-variant/20 flat no shadows relative z-20">
+<div class="flex flex-col md:flex-row justify-between items-start px-margin-mobile md:px-margin-desktop gap-8 max-w-container-max mx-auto w-full">
+<div class="font-label-caps text-label-caps text-primary uppercase">
+                © 2024 BONGZWAY FOREX EA. ALL RIGHTS RESERVED.
+                <div class="text-[10px] text-tertiary mt-4 max-w-md lowercase opacity-50 font-sans tracking-normal">
+                    This AI trading algorithm is for informational and educational purposes only and does not constitute financial advice; past performance is not a guide to future results, and all trading decisions are made at the user's own risk.
+                </div>
+</div>
+<div class="flex flex-col md:flex-row gap-6 md:gap-8">
+<a class="font-body-md text-body-md text-on-tertiary-fixed-variant hover:text-on-surface hover:text-primary underline underline-offset-4 opacity-100 hover:opacity-80 transition-opacity" href="#">Risk Disclaimer</a>
+<a class="font-body-md text-body-md text-on-tertiary-fixed-variant hover:text-on-surface hover:text-primary underline underline-offset-4 opacity-100 hover:opacity-80 transition-opacity" href="#">Terms of Service</a>
+<a class="font-body-md text-body-md text-on-tertiary-fixed-variant hover:text-on-surface hover:text-primary underline underline-offset-4 opacity-100 hover:opacity-80 transition-opacity" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-tertiary-fixed-variant hover:text-on-surface hover:text-primary underline underline-offset-4 opacity-100 hover:opacity-80 transition-opacity flex items-center gap-2" href="#"><span class="material-symbols-outlined text-[16px]">support_agent</span> Telegram Support</a>
+</div>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="bg-surface-container/95 dark:bg-surface-container/95 backdrop-blur-lg fixed bottom-0 w-full rounded-t-full border-t border-primary/20 shadow-[0_-8px_24px_-12px_rgba(255,85,64,0.3)] md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe">
+<a class="flex flex-col items-center justify-center text-primary font-bold font-label-caps text-[10px] uppercase active:bg-primary/10 tap-highlight-transparent active:scale-90 transition-all p-2 rounded-lg" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">home</span>
+            Home
+        </a>
+<a class="flex flex-col items-center justify-center text-on-tertiary-fixed-variant font-label-caps text-[10px] uppercase active:bg-primary/10 tap-highlight-transparent active:scale-90 transition-all p-2 rounded-lg" href="#">
+<span class="material-symbols-outlined mb-1">grid_view</span>
+            Scanner
+        </a>
+<a class="flex flex-col items-center justify-center text-on-tertiary-fixed-variant font-label-caps text-[10px] uppercase active:bg-primary/10 tap-highlight-transparent active:scale-90 transition-all p-2 rounded-lg" href="#">
+<span class="material-symbols-outlined mb-1">monitoring</span>
+            MetaTrader
+        </a>
+<a class="flex flex-col items-center justify-center text-on-tertiary-fixed-variant font-label-caps text-[10px] uppercase active:bg-primary/10 tap-highlight-transparent active:scale-90 transition-all p-2 rounded-lg" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+            Profile
+        </a>
+</nav>
+<!-- Optional JS for smooth scrolling or interactions -->
+<script>
+        // Smooth accordion toggle logic (optional enhancement over default details behavior)
+        document.querySelectorAll('details').forEach((detail) => {
+            detail.addEventListener('toggle', (e) => {
+                if (detail.open) {
+                    document.querySelectorAll('details').forEach((otherDetail) => {
+                        if (otherDetail !== detail) {
+                            otherDetail.removeAttribute('open');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body></html>
