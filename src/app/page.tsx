@@ -35,9 +35,8 @@ export default function Home() {
               </div>
               
               <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tighter leading-[1] text-white uppercase drop-shadow-2xl">
-                AUTOMATE<br/>
-                YOUR EDGE.<br/>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">TRADE LIKE AN INSTITUTION.</span>
+                UNLEASH THE POWER<br/>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">OF AUTOMATION</span>
               </h1>
               
               <p className="font-body-md text-neutral-300 max-w-[550px] mx-auto md:mx-0 text-base sm:text-lg leading-relaxed">
