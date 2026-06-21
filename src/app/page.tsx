@@ -94,7 +94,7 @@ export default function Home() {
 
             {/* Right Content — Robot Hero Image */}
             <div className="w-[80%] sm:w-[60%] md:w-[50%] h-[300px] sm:h-[400px] md:h-[115%] md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2 z-10 flex items-center justify-center md:justify-end mb-4 md:mb-0 pointer-events-none mt-12 md:mt-0">
-              <div className="relative w-full h-full" style={{ maskImage: "linear-gradient(to left, black 55%, transparent 100%)", WebkitMaskImage: "linear-gradient(to left, black 55%, transparent 100%)" }}>
+              <div className="relative w-full h-full">
                 <img 
                   className="w-full h-full object-contain md:object-right filter drop-shadow-[0_0_30px_rgba(220,38,38,0.5)]" 
                   alt="Specter X Pro+ Robot" 
